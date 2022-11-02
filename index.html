@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Portfolio</title>
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/01c7d467f4.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div id="header">
@@ -21,7 +25,7 @@
         </nav>
         <div class="header-text">
           <p>Hi, I'm <span>Ben Brennan</span></p>
-          <h1>An Aspiring Full <br />Stack Web Developer!</h1>
+          <h1>An Aspiring Full <br />Stack Software Developer!</h1>
         </div>
       </div>
     </div>
@@ -42,11 +46,15 @@
             </p>
 
             <div class="tab-titles">
-              <p class="tab-links active-link">Skills</p>
-              <p class="tab-links">Experience</p>
-              <p class="tab-links">Education</p>
+              <p class="tab-links active-link" onclick="openTab('skills')">
+                Skills
+              </p>
+              <p class="tab-links" onclick="openTab('experience')">
+                Experience
+              </p>
+              <p class="tab-links" onclick="openTab('education')">Education</p>
             </div>
-            <div class="tab-contents active-tab">
+            <div class="tab-contents active-tab" id="skills">
               <ul>
                 <li><span>Languages</span><br />Javascript(ES6)</li>
                 <li>
@@ -62,7 +70,7 @@
                 </li>
               </ul>
             </div>
-            <div class="tab-contents">
+            <div class="tab-contents" id="experience">
               <ul>
                 <li>
                   <span>2022 - ???</span><br />Your Company could be here!
@@ -70,7 +78,7 @@
                 <li><span>2022</span><br />Northcoders Full Stack Bootcamp</li>
               </ul>
             </div>
-            <div class="tab-contents">
+            <div class="tab-contents" id="education">
               <ul>
                 <li>
                   <span>2021</span><br />Applied Geology at University of
@@ -87,5 +95,63 @@
         </div>
       </div>
     </div>
+    <!-- ---------------Projects--------------- -->
+    <div id="projects">
+      <div class="container">
+        <h1 class="sub-title">Projects</h1>
+        <div class="project-list">
+          <div class="project">
+            <img src="./website imgs/myGuide1.jpg" />
+            <div class="layer">
+              <h3>myGuide</h3>
+              <p>
+                A walking tour app for your phone! Create, update, delete and
+                take part in tours from your phone.
+              </p>
+              <a href="#">
+                Front End Repo<i class="fa-brands fa-square-github"></i
+              ></a>
+              <a href="#">
+                Back End Repo<i class="fa-brands fa-square-github"></i
+              ></a>
+            </div>
+          </div>
+          <div class="project">
+            <img src="./website imgs/NCNews1.png" />
+            <div class="layer">
+              <h3>NCNews</h3>
+              <p>A (fake) News Website!</p>
+              <a href="#">
+                Live Website:
+                <i class="fa-solid fa-arrow-up-right-from-square"></i
+              ></a>
+              <a href="#">
+                Front End Repo:
+                <i class="fa-brands fa-square-github"></i
+              ></a>
+              <a href="#">
+                Back End Repo:
+                <i class="fa-brands fa-square-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let tabLinks = document.getElementsByClassName("tab-links");
+      let tabContents = document.getElementsByClassName("tab-contents");
+
+      function openTab(tabName) {
+        for (tabLink of tabLinks) {
+          tabLink.classList.remove("active-link");
+        }
+        for (tabContent of tabContents) {
+          tabContent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabName).classList.add("active-tab");
+      }
+    </script>
   </body>
 </html>
