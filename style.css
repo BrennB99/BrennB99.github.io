@@ -76,6 +76,23 @@ nav ul li a:hover::after {
   color: #ff004f;
 }
 
+.button {
+  display: block;
+  margin: 200px auto;
+  width: fit-content;
+  border: 1px solid #ff004f;
+  padding: 14px 50px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  background-color: transparent;
+  transition: background 0.5s;
+}
+
+.button:hover {
+  background: #ff004f;
+}
+
 /* ----------about-------------- */
 #about {
   padding: 80px 0;
@@ -252,23 +269,6 @@ nav ul li a:hover::after {
 .social-icons a:hover {
   color: #ff004f;
   transform: translateY(-5px);
-}
-
-.button {
-  display: block;
-  margin: 50px auto;
-  width: fit-content;
-  border: 1px solid #ff004f;
-  padding: 14px 50px;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #fff;
-  background-color: transparent;
-  transition: background 0.5s;
-}
-
-.button:hover {
-  background: #ff004f;
 }
 
 .contact-right form {
