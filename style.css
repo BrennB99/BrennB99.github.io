@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #080808;
   color: #fff;
@@ -286,6 +290,13 @@ form .submit-button {
   cursor: pointer;
 }
 
+#message {
+  color: #61b752;
+  margin-top: -40px;
+  display: block;
+  text-align: center;
+}
+
 /* ---------------------Mobile Devices/ Small Screens--------------------------------- */
 nav .fa-solid {
   display: none;
@@ -311,8 +322,28 @@ nav .fa-solid {
     position: fixed;
     top: 0;
     right: 0;
+    right: -200px;
     width: 200px;
     height: 100vh;
     padding-top: 50px;
+    z-index: 2;
+    transition: right 0.5s;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 25px;
+  }
+
+  nav ul .fa-solid {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+  }
+
+  .contact-left,
+  .contact-right {
+    flex-basis: 100%;
   }
 }

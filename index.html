@@ -16,14 +16,14 @@
       <div class="container">
         <nav>
           <h1 class="main-header">My Website</h1>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Contact</a></li>
-            <i class="fa-solid fa-circle-xmark"></i>
+          <ul id="navmenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <i class="fa-solid fa-circle-xmark" onclick="closeMenu()"></i>
           </ul>
-          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-bars" onclick="openMenu()"></i>
         </nav>
         <div class="header-text">
           <p>Hi, I'm <span>Ben Brennan</span></p>
@@ -90,10 +90,6 @@
               </ul>
             </div>
           </div>
-
-          <div class="about-col-2">
-            <h1>Languages and Frameworks</h1>
-          </div>
         </div>
       </div>
     </div>
@@ -158,21 +154,17 @@
             </div>
           </div>
           <div class="contact-right">
-            <form>
-              <input type="text" name="Name" placeholder="Your Name" required />
-              <input
-                type="text"
-                name="Email"
-                placeholder="Your Email"
-                required
-              />
+            <form name="submit-to-google-sheet">
+              <input type="text" name="Name" placeholder="Name" required />
+              <input type="text" name="Email" placeholder="Email" required />
               <textarea
                 name="Message"
                 rows="6"
-                placeholder="Your Message..."
+                placeholder="Message"
               ></textarea>
               <button type="submit" class="button submit-button">Submit</button>
             </form>
+            <span id="message"></span>
           </div>
         </div>
       </div>
@@ -191,6 +183,36 @@
         event.currentTarget.classList.add("active-link");
         document.getElementById(tabName).classList.add("active-tab");
       }
+    </script>
+    <script>
+      let navMenu = document.getElementById("navmenu");
+
+      function openMenu() {
+        navMenu.style.right = "0";
+      }
+
+      function closeMenu() {
+        navMenu.style.right = "-200px";
+      }
+    </script>
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbwOaC2ZvDRdwAMQHwyukRASHRtahoB6uJxoL_tAPoYP1L-CtSKsWp8CFvagrOwyrS0/exec";
+      const form = document.forms["submit-to-google-sheet"];
+      const message = document.getElementById("message");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            message.innerHTML = "Message Sent succesfully!";
+            setTimeout(function () {
+              message.innerHTML = "";
+            }, 5000);
+            form.reset();
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
     </script>
   </body>
 </html>
