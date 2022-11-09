@@ -186,6 +186,8 @@ nav ul li a:hover::after {
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .project img {
